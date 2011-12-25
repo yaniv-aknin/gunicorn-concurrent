@@ -1,0 +1,2 @@
+web: python nginx.conf.py > run/nginx.conf && touch run/access.log run/error.log && (tail -f -n 0 run/*.log &) && exec nginx -c run/nginx.conf -p .
+gunicorn: gunicorn -b unix:run/gunicorn.sock -c server.py server:wsgi
